@@ -255,7 +255,29 @@ h2 ~ p {
 .footer h3 span {
   color: #aaa;
 }
-/* SOCIAL STYLES*/
+
+/* COLUMN STYLES */
+.col-three {
+  display: flex;
+}
+.col {
+  box-sizing: border-box;
+  padding: 2em;
+}
+.col-three .col ~ .col {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.col-three .col-nav {
+  flex: 0 1 15em;
+}
+.col-three .col-content {
+  flex: 1;
+}
+.col-three .col-aside {
+  flex: 0 1 20em;
+}
+
+/* SOCIAL STYLES */
 .social-link {
   background: rgba(150, 150, 150, 0.5);
   border-radius: 99px;
