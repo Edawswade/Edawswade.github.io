@@ -1,0 +1,158 @@
+<!-- code from https://pagedart.com/blog/how-to-add-a-search-bar-in-html/ -->
+
+<form role="search" id="form">
+  <input
+    type="search"
+    id="query"
+    name="q"
+    placeholder="Search..."
+    aria-label="Search through site content"
+  />
+  <button>
+    <svg viewBox="0 0 1024 1024">
+      <path
+        class="path1"
+        d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"
+      ></path>
+    </svg>
+  </button>
+</form>
+
+<!-- JavaScript
+We are going to do a Google search when someone searches in our search bar.
+
+To do this we need to write some code that will:
+
+Add an event listener to the form so we know when someone presses the search button
+Get the text value from the query box
+Build a Google URL that searches a specific site
+Opens a new tab with Google and the search query
+Google allows you to search a specific site if you add site: to the query. For example, if you wanted to search PageDart for the term lazy loading you could add this in Google:
+
+site:pagedart.com lazy loading
+
+The great thing about this search query is that it only returns results for the site you specify. You filter Google results and no other site will appear in the results. We can use this trick to create a search results page from our search bar.
+
+Here is the code that can do this:
+
+const f = document.getElementById('form');
+const q = document.getElementById('query');
+const google = 'https://www.google.com/search?q=site%3A+';
+const site = 'pagedart.com';
+
+function submitted(event) {
+  event.preventDefault();
+  const url = google + site + '+' + q.value;
+  const win = window.open(url, '_blank');
+  win.focus();
+}
+
+f.addEventListener('submit', submitted);
+The first thing we do is attach some variables to the form and search input box. Then we set the Google URL and set the site variable:
+
+const f = document.getElementById('form');
+const q = document.getElementById('query');
+const google = 'https://www.google.com/search?q=site%3A+';
+const site = 'pagedart.com';
+If you want to search your site then change const site = 'pagedart.com'; to your website const site = 'example.com';.
+
+We then create a function that will run each time someone presses the search button. The function will then open Google in a new tab in the browser:
+
+function submitted(event) {
+  event.preventDefault();
+  const url = google + site + '+' + q.value;
+  const win = window.open(url, '_blank');
+  win.focus();
+}
+The last line in the code:
+
+f.addEventListener('submit', submitted);
+Add a listener to the form. It will listen for the submit button press and run the function each time.
+
+Now when you enter a search query and press the search icon a new tab will open up with your site and the search query.
+
+Complete Solution
+Now we have covered all the parts of a search bar:
+
+HTML of the form
+CSS to add color and design
+JavaScript to process the form input
+You can see a working codepen example.
+
+Here is the complete HTML:
+
+<!DOCTYPE html>
+<html lang='en' class=''>
+  <head>
+    <meta charset='UTF-8'>
+    <title>Search Bar Demo</title>
+    <style>
+        body {
+        background-color: #3745c2;
+        margin: 200px 40%;
+      }
+
+      form {
+        background-color: #4654e1;
+        width: 300px;
+        height: 44px;
+        border-radius: 5px;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+      }
+
+      input {
+        all: unset;
+        font: 16px system-ui;
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        padding: 6px 10px;
+      }
+
+      ::placeholder {
+        color: #fff;
+        opacity: 0.7; 
+      }
+
+      svg {
+        color: #fff;
+        fill: currentColor;
+        width: 24px;
+        height: 24px;
+        padding: 10px;
+      }
+
+      button {
+        all: unset;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+      }
+    </style>
+  </head>
+  <body>
+    <form role="search" id="form">
+      <input type="search" id="query" name="q" placeholder="Search..." aria-label="Search through site content">
+      <button>
+        <svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg>
+      </button>
+    </form>
+    <script>
+      const f = document.getElementById('form');
+      const q = document.getElementById('query');
+      const google = 'https://www.google.com/search?q=site%3A+';
+      const site = 'pagedart.com';
+
+      function submitted(event) {
+        event.preventDefault();
+        const url = google + site + '+' + q.value;
+        const win = window.open(url, '_blank');
+        win.focus();
+      }
+
+      f.addEventListener('submit', submitted);
+    </script>
+  </body>
+</html> -->
